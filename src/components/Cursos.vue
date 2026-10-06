@@ -19,13 +19,18 @@ const cursosVisibles = computed(() => {
     idsCoincidentes.has(curso.id),
   )
 })
+
+function limpiarFiltros() {
+  busqueda.value = ''
+  filtro.value = 'todos'
+}
 </script>
 
 <template>
-  <main class="pagina-cursos">
+  <main class="pagina-cursos page-shell">
     <header class="encabezado">
-      <h1>Mis cursos</h1>
-      <p>Vista general del curso</p>
+      <h1 class="page-title">Mis cursos</h1>
+      <p class="page-intro">Explora la oferta académica y encuentra el curso ideal para ti.</p>
     </header>
 
     <div class="herramientas">
@@ -47,6 +52,11 @@ const cursosVisibles = computed(() => {
         />
       </label>
     </div>
+
+    <p class="resumen-resultados" role="status" aria-live="polite">
+      {{ cursosVisibles.length }}
+      {{ cursosVisibles.length === 1 ? 'curso encontrado' : 'cursos encontrados' }}
+    </p>
 
     <section v-if="cursosVisibles.length" class="rejilla" aria-label="Cursos">
       <RouterLink
@@ -72,40 +82,31 @@ const cursosVisibles = computed(() => {
       </RouterLink>
     </section>
 
-    <p v-else class="sin-resultados">
-      No se encontraron cursos que coincidan con la búsqueda.
-    </p>
+    <section v-else class="sin-resultados" role="status">
+      <span class="sin-resultados-icono" aria-hidden="true">⌕</span>
+      <h2>No encontramos cursos</h2>
+      <p>Prueba con otro nombre o cambia el filtro para ver más opciones.</p>
+      <button type="button" class="limpiar-filtros" @click="limpiarFiltros">
+        Mostrar todos los cursos
+      </button>
+    </section>
   </main>
 </template>
 
 <style scoped>
 .pagina-cursos {
-  width: min(100% - 64px, 1320px);
-  min-height: calc(100vh - 62px);
-  margin: 0 auto;
-  padding: 20px 0 48px;
-  color: var(--brand-purple-deep);
-  background: #fff;
-  box-sizing: border-box;
+  --page-width: 1320px;
 }
 
-.encabezado h1 {
-  margin: 0 0 24px;
-  color: var(--brand-purple-deep);
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: -0.7px;
-  line-height: 1.2;
-}
-
-.encabezado p {
-  margin-bottom: 8px;
-  font-size: 16px;
+.encabezado {
+  margin-bottom: 28px;
 }
 
 .herramientas {
-  display: grid;
-  gap: 12px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
   margin-bottom: 20px;
 }
 
@@ -135,6 +136,7 @@ const cursosVisibles = computed(() => {
 
 .buscador {
   display: flex;
+  width: min(100%, 420px);
   height: 44px;
   align-items: center;
   gap: 12px;
@@ -142,7 +144,8 @@ const cursosVisibles = computed(() => {
   border: 1px solid var(--brand-gold);
   border-radius: 24px;
   background: #fff;
-  box-shadow: 0 2px 8px rgb(20 8 26 / 18%);
+  box-shadow: 0 2px 8px rgb(20 8 26 / 8%);
+  box-sizing: border-box;
 }
 
 .icono-busqueda {
@@ -179,14 +182,32 @@ const cursosVisibles = computed(() => {
 .rejilla {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px 40px;
+  gap: 28px;
 }
 
 .tarjeta {
-  display: block;
+  display: flex;
+  flex-direction: column;
   min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgb(45 20 54 / 10%);
+  border-radius: 16px;
+  background: #fff;
   color: inherit;
   text-decoration: none;
+  box-shadow: 0 4px 14px rgb(45 20 54 / 6%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta:hover,
+.tarjeta:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgb(45 20 54 / 13%);
+}
+
+.tarjeta:focus-visible {
+  outline: 3px solid var(--brand-gold);
+  outline-offset: 3px;
 }
 
 .portada {
@@ -247,7 +268,8 @@ const cursosVisibles = computed(() => {
 }
 
 .informacion {
-  padding: 10px 20px 0;
+  flex: 1;
+  padding: 16px 18px 18px;
   color: var(--brand-purple-deep);
   background: var(--brand-surface);
   border-bottom-right-radius: 10px;
@@ -271,8 +293,49 @@ const cursosVisibles = computed(() => {
 }
 
 .sin-resultados {
-  padding: 32px 0;
-  color: var(--brand-purple);
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 36px 20px;
+  border: 1px dashed rgb(45 20 54 / 24%);
+  border-radius: 16px;
+  background: var(--brand-surface);
+  color: var(--brand-purple-deep);
+  text-align: center;
+}
+
+.sin-resultados-icono {
+  color: var(--brand-gold);
+  font-size: 36px;
+  line-height: 1;
+}
+
+.sin-resultados h2,
+.sin-resultados p {
+  margin: 0;
+}
+
+.sin-resultados h2 {
+  color: var(--brand-purple-deep);
+}
+
+.limpiar-filtros {
+  min-height: 42px;
+  margin-top: 6px;
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 22px;
+  background: var(--brand-purple);
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.limpiar-filtros:hover,
+.limpiar-filtros:focus-visible {
+  background: var(--brand-purple-deep);
 }
 
 @media (max-width: 900px) {
@@ -283,13 +346,18 @@ const cursosVisibles = computed(() => {
 }
 
 @media (max-width: 600px) {
-  .pagina-cursos {
-    width: min(100% - 32px, 440px);
+  .pagina-cursos.page-shell {
+    width: min(100% - 32px, 520px);
     padding-top: 24px;
   }
 
-  .encabezado h1 {
-    font-size: 30px;
+  .herramientas {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .buscador {
+    width: 100%;
   }
 
   .rejilla {

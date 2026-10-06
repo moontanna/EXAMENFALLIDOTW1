@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { cursos, inscripciones } from '../data/cursos'
+import { cursos, inscripciones, type Inscripcion } from '../data/cursos'
 
 const route = useRoute()
 const idInicial = Number(route.query.curso)
@@ -11,43 +11,60 @@ const nombre = ref('')
 const correo = ref('')
 const telefono = ref('')
 const cursoId = ref(cursoInicial?.id.toString() ?? '')
-const guardado = ref(false)
+const errorGuardado = ref('')
+const inscripcionGuardada = ref<Inscripcion | null>(null)
 
 const cursoSeleccionado = computed(() =>
   cursos.find((curso) => curso.id === Number(cursoId.value)),
 )
 
 function guardarInscripcion() {
-  const curso = cursoSeleccionado.value
-
-  if (!curso) {
+  if (inscripcionGuardada.value) {
     return
   }
 
-  inscripciones.push({
+  const curso = cursoSeleccionado.value
+
+  if (!curso) {
+    errorGuardado.value = 'Selecciona un curso para continuar.'
+    return
+  }
+
+  const nuevaInscripcion: Inscripcion = {
     nombre: nombre.value,
     correo: correo.value,
     telefono: telefono.value,
     cursoId: curso.id,
     cursoNombre: curso.nombre,
     fecha: new Date().toISOString(),
-  })
+  }
+  inscripciones.push(nuevaInscripcion)
 
-  guardado.value = true
+  inscripcionGuardada.value = nuevaInscripcion
+  errorGuardado.value = ''
+}
+
+function registrarOtraInscripcion() {
+  nombre.value = ''
+  correo.value = ''
+  telefono.value = ''
+  cursoId.value = ''
+  inscripcionGuardada.value = null
+  errorGuardado.value = ''
 }
 </script>
 
 <template>
-  <main class="pagina-inscripcion">
+  <main class="pagina-inscripcion page-shell">
     <RouterLink to="/cursos" class="volver">← Volver a los cursos</RouterLink>
     <header class="encabezado">
-      <h1>Inscripción a un curso</h1>
-      <p>Completa tus datos y selecciona el curso que te interesa.</p>
+      <h1 class="page-title">Inscripción a un curso</h1>
+      <p class="page-intro">Completa tus datos y selecciona el curso que te interesa.</p>
     </header>
 
     <form class="formulario" @submit.prevent="guardarInscripcion">
       <label for="nombre">Nombre completo</label>
-      <input id="nombre" v-model.trim="nombre" name="nombre" autocomplete="name" required />
+      <input id="nombre" v-model.trim="nombre" name="nombre" autocomplete="name" required :disabled="Boolean(inscripcionGuardada)" />
 
       <label for="correo">Correo electrónico</label>
       <input
@@ -57,6 +74,7 @@ function guardarInscripcion() {
         type="email"
         autocomplete="email"
         required
+        :disabled="Boolean(inscripcionGuardada)"
       />
 
       <label for="telefono">Teléfono</label>
@@ -67,32 +85,47 @@ function guardarInscripcion() {
         type="tel"
         autocomplete="tel"
         required
+        :disabled="Boolean(inscripcionGuardada)"
       />
 
       <label for="curso">Curso</label>
-      <select id="curso" v-model="cursoId" name="curso" required>
+      <select id="curso" v-model="cursoId" name="curso" required :disabled="Boolean(inscripcionGuardada)">
         <option value="" disabled>Selecciona un curso</option>
         <option v-for="curso in cursos" :key="curso.id" :value="curso.id.toString()">
           {{ curso.nombre }}
         </option>
       </select>
 
-      <button type="submit" class="boton-enviar">Guardar inscripción</button>
+      <button type="submit" class="boton-enviar" :disabled="Boolean(inscripcionGuardada)">
+        Guardar inscripción
+      </button>
 
-      <p v-if="guardado" class="aviso" role="status">
-        Inscripción guardada correctamente en la lista de inscripciones.
-      </p>
+      <p v-if="errorGuardado" class="mensaje-error" role="alert">{{ errorGuardado }}</p>
+
+      <section v-if="inscripcionGuardada" class="confirmacion" role="status" aria-live="polite">
+        <span class="confirmacion-icono" aria-hidden="true">✓</span>
+        <div>
+          <h2>Inscripción registrada</h2>
+          <p>
+            {{ inscripcionGuardada.nombre }}, registramos tu solicitud para
+            <strong>{{ inscripcionGuardada.cursoNombre }}</strong>.
+          </p>
+          <p class="nota-persistencia">
+            El registro está en la lista de esta sesión y no se conserva si recargas o cierras la
+            página.
+          </p>
+        </div>
+        <button type="button" class="boton-secundario" @click="registrarOtraInscripcion">
+          Registrar otra
+        </button>
+      </section>
     </form>
   </main>
 </template>
 
 <style scoped>
 .pagina-inscripcion {
-  width: min(100% - 40px, 720px);
-  min-height: calc(100vh - 62px);
-  margin: 0 auto;
-  padding: 28px 0 48px;
-  color: var(--brand-purple-deep);
+  --page-width: 720px;
 }
 
 .volver {
@@ -102,16 +135,7 @@ function guardarInscripcion() {
 }
 
 .encabezado {
-  margin-bottom: 24px;
-}
-
-.encabezado h1 {
-  margin: 0 0 8px;
-  font-size: 32px;
-}
-
-.encabezado p {
-  margin: 0;
+  margin-bottom: 28px;
 }
 
 .formulario {
@@ -147,6 +171,13 @@ function guardarInscripcion() {
   outline-offset: 2px;
 }
 
+.formulario input:disabled,
+.formulario select:disabled {
+  background: #f0edf3;
+  color: #655a6d;
+  cursor: not-allowed;
+}
+
 .boton-enviar {
   min-height: 46px;
   margin-top: 14px;
@@ -165,16 +196,71 @@ function guardarInscripcion() {
   background: var(--brand-purple-deep);
 }
 
-.aviso {
+.boton-enviar:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.mensaje-error {
   margin: 4px 0 0;
+  color: #a12622;
+  font-weight: 600;
+}
+
+.confirmacion {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 14px;
+  margin-top: 12px;
+  padding: 18px;
+  border: 1px solid #9cc7a2;
+  border-radius: 12px;
+  background: #f1faf2;
+  color: #1d4d2a;
+}
+
+.confirmacion-icono {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: #d8efdc;
+  font-weight: 800;
+}
+
+.confirmacion h2,
+.confirmacion p {
+  margin: 0 0 6px;
+}
+
+.nota-persistencia {
   font-size: 14px;
-  line-height: 1.5;
+}
+
+.boton-secundario {
+  grid-column: 2;
+  justify-self: start;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid currentColor;
+  border-radius: 20px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
   font-weight: 700;
+  cursor: pointer;
 }
 
 @media (max-width: 520px) {
   .formulario {
     padding: 18px;
+  }
+
+  .pagina-inscripcion {
+    width: min(100% - 32px, 520px);
+    padding-top: 24px;
   }
 }
 </style>

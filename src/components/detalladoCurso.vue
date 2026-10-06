@@ -20,7 +20,7 @@ const curso = computed(() => {
 </script>
 
 <template>
-  <main v-if="curso" class="detalle-curso">
+  <main v-if="curso" class="detalle-curso page-shell">
     <div class="detalle-layout">
       <aside class="indice">
         <p class="indice-titulo">Contenido</p>
@@ -43,13 +43,18 @@ const curso = computed(() => {
 
       <div class="contenido">
         <RouterLink to="/cursos" class="volver">← Volver a los cursos</RouterLink>
-        <h1>{{ curso.nombre }}</h1>
-        <RouterLink
-          :to="{ name: 'inscripciones', query: { curso: curso.id } }"
-          class="boton-inscripcion"
-        >
-          Inscribirme a este curso
-        </RouterLink>
+        <header class="detalle-encabezado">
+          <h1 class="page-title">{{ curso.nombre }}</h1>
+          <p class="page-intro">
+            Consulta las certificaciones, recursos y videos relacionados con este curso.
+          </p>
+          <RouterLink
+            :to="{ name: 'inscripciones', query: { curso: curso.id } }"
+            class="boton-inscripcion"
+          >
+            Inscribirme a este curso
+          </RouterLink>
+        </header>
 
         <section id="certificaciones">
           <h2>Certificaciones</h2>
@@ -126,12 +131,10 @@ const curso = computed(() => {
     </div>
   </main>
   
-  <main v-else class="detalle-curso">
-    <h1>No se encontró el curso</h1>
+  <main v-else class="detalle-curso page-shell">
+    <h1 class="page-title">No se encontró el curso</h1>
     <RouterLink to="/cursos" class="volver">Volver al catálogo</RouterLink>
   </main>
-
-  
 </template>
 
 <style scoped>
@@ -141,12 +144,7 @@ const curso = computed(() => {
 }
 
 .detalle-curso {
-  width: min(100% - 48px, 1180px);
-  min-height: calc(100vh - 62px);
-  margin: 0 auto;
-  padding: 28px 0 48px;
-  color: var(--brand-purple-deep);
-  background: #fff;
+  --page-width: 1180px;
 }
 
 .detalle-layout {
@@ -201,6 +199,16 @@ const curso = computed(() => {
   text-align: left;
 }
 
+.detalle-encabezado {
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgb(45 20 54 / 12%);
+}
+
+.detalle-encabezado .page-intro {
+  margin-bottom: 18px;
+}
+
 .volver {
   display: inline-block;
   margin-bottom: 18px;
@@ -223,25 +231,21 @@ const curso = computed(() => {
 }
 
 .detalle-curso,
-section,
-.content,
 .contenido > * {
   text-align: left;
 }
 
-h1 {
-  margin: 0 0 24px;
-  color: var(--brand-purple-deep);
-  font-size: 32px;
-  line-height: 1.25;
-}
-
-section {
-  margin-top: 24px;
+.contenido > section {
+  margin-top: 20px;
+  padding: 22px 24px;
+  border: 1px solid rgb(45 20 54 / 10%);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgb(45 20 54 / 5%);
   scroll-margin-top: 82px;
 }
 
-h2 {
+.contenido > section h2 {
   margin: 0 0 10px;
   color: var(--brand-purple);
   font-size: 22px;
@@ -287,7 +291,7 @@ ul {
   display: grid;
   gap: 12px;
   padding: 14px;
-  border: 1px solid rgba(98, 55, 135, 0.12);
+  border: 1px solid rgb(45 20 54 / 10%);
   border-radius: 12px;
   background: #faf7ff;
 }
@@ -317,6 +321,11 @@ a {
 }
 
 @media (max-width: 768px) {
+  .detalle-curso.page-shell {
+    width: min(100% - 32px, 600px);
+    padding-top: 24px;
+  }
+
   .detalle-layout {
     display: block;
   }
@@ -324,6 +333,10 @@ a {
   .indice {
     position: static;
     margin-bottom: 24px;
+  }
+
+  .contenido > section {
+    padding: 18px;
   }
 }
 </style>

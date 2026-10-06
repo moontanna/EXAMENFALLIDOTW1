@@ -16,10 +16,10 @@ function cambiarDestacado(direccion: number) {
 </script>
 
 <template>
-  <main class="pagina-inicio">
+  <main class="pagina-inicio page-shell">
     <header class="encabezado">
-      <h1>Inicio</h1>
-      <p>Explora nuestros cursos más solicitados</p>
+      <h1 class="page-title">Inicio</h1>
+      <p class="page-intro">Explora nuestros cursos más solicitados</p>
     </header>
 
     <section
@@ -100,27 +100,11 @@ function cambiarDestacado(direccion: number) {
 
 <style scoped>
 .pagina-inicio {
-  width: min(100% - 64px, 1320px);
-  min-height: calc(100vh - 62px);
-  margin: 0 auto;
-  padding: 20px 0 48px;
-  box-sizing: border-box;
-  color: var(--brand-purple-deep);
-  background: #fff;
+  --page-width: 1320px;
 }
 
-.encabezado h1 {
-  margin: 0 0 12px;
-  color: var(--brand-purple-deep);
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: -0.7px;
-  line-height: 1.2;
-}
-
-.encabezado p {
-  margin: 0;
-  font-size: 16px;
+.encabezado {
+  margin-bottom: 28px;
 }
 
 .carrusel-destacados {
@@ -277,12 +261,8 @@ function cambiarDestacado(direccion: number) {
 
 @media (max-width: 600px) {
   .pagina-inicio {
-    width: min(100% - 32px, 440px);
+    width: min(100% - 32px, 520px);
     padding-top: 24px;
-  }
-
-  .encabezado h1 {
-    font-size: 30px;
   }
 
   .carrusel-contenido {
