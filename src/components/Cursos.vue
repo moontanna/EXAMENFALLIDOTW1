@@ -1,29 +1,23 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { cursos } from '../data/cursos'
+import {
+  getCursosByFiltro,
+  getCursosByNombre,
+  idsDestacados,
+  type FiltroCurso,
+} from '../bases/impfunciones'
 
-const idsDestacados = [1, 4, 5, 8, 9]
-const filtro = ref('todos')
+const filtro = ref<FiltroCurso>('todos')
 const busqueda = ref('')
 
 const cursosVisibles = computed(() => {
-  const termino = busqueda.value
-    .trim()
-    .toLocaleLowerCase('es')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+  const idsCoincidentes = new Set(
+    getCursosByNombre(busqueda.value).map((curso) => curso.id),
+  )
 
-  return cursos.filter((curso) => {
-    const coincideFiltro =
-      filtro.value === 'todos' ||
-      (filtro.value === 'destacados' && idsDestacados.includes(curso.id))
-    const lowercase = curso.nombre
-      .toLocaleLowerCase('es')
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-
-    return coincideFiltro && lowercase.includes(termino)
-  })
+  return getCursosByFiltro(filtro.value).filter((curso) =>
+    idsCoincidentes.has(curso.id),
+  )
 })
 </script>
 

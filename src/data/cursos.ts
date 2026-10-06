@@ -9,9 +9,19 @@ export interface Contacto {
   horario?: string 
 }
 
+export interface ImagenApoyo {
+  url: string
+  alt: string
+  fuenteUrl: string
+  credito: string
+  licencia: string
+  licenciaUrl: string
+}
+
 export interface Curso {
   id: number
   nombre: string
+  imagenApoyo: ImagenApoyo
   materialApoyo: Enlace[]
   contacto: Contacto
   certificaciones: string[]
@@ -23,22 +33,33 @@ export interface Curso {
   videos: Enlace[]
 }
 
+export interface Inscripcion {
+  nombre: string
+  correo: string
+  telefono: string
+  cursoId: number
+  cursoNombre: string
+  fecha: string
+}
+
+export const inscripciones: Inscripcion[] = []
+
 export const cursos: Curso[] = [
   {
     id: 1,
     nombre: 'Finanzas Empresariales para la Toma de Decisiones',
+    imagenApoyo: {
+      url: 'https://live.staticflickr.com/5756/21184692654_210b362269_b.jpg',
+      alt: 'Panel de discusión en un foro de finanzas corporativas',
+      fuenteUrl: 'https://www.flickr.com/photos/134633001@N07/21184692654',
+      credito: 'falcongrp',
+      licencia: 'CC BY-SA 2.0',
+      licenciaUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
+    },
     materialApoyo: [
       {
-        titulo: 'CENEVAL – Finanzas Empresariales',
+        titulo: 'Guía para el sustentante del examen EUC-FINEM – CENEVAL/IMCP',
         url: 'https://ceneval.edu.mx/examenes-certificacion-euc_finem/',
-      },
-      {
-        titulo: 'CONDUSEF – Educación financiera',
-        url: 'https://www.condusef.gob.mx/',
-      },
-      {
-        titulo: 'UNAM – Facultad de Contaduría y Administración',
-        url: 'https://www.fca.unam.mx/',
       },
     ],
     contacto: {
@@ -75,15 +96,20 @@ export const cursos: Curso[] = [
   {
     id: 2,
     nombre: 'Contabilidad Práctica para Emprendedores',
+    imagenApoyo: {
+      url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Camp_Chesterfield_general_account_ledger,_1910-1916_-_DPLA_-_206e8c73ecb9419118717c75562a2497_(page_12).jpg',
+      alt: 'Página de un libro mayor contable histórico',
+      fuenteUrl:
+        'https://commons.wikimedia.org/wiki/File:Camp_Chesterfield_general_account_ledger,_1910-1916_-_DPLA_-_206e8c73ecb9419118717c75562a2497_(page_12).jpg',
+      credito: 'DPLA / Indiana Memory; autor no identificado',
+      licencia: 'Dominio público en EE. UU.',
+      licenciaUrl:
+        'https://commons.wikimedia.org/wiki/File:Camp_Chesterfield_general_account_ledger,_1910-1916_-_DPLA_-_206e8c73ecb9419118717c75562a2497_(page_12).jpg',
+    },
     materialApoyo: [
-      { titulo: 'SAT – Información fiscal', url: 'https://www.sat.gob.mx/' },
       {
-        titulo: 'Contabilidad',
-        url: 'https://uttamazula.edu.mx/Contabilidad.php',
-      },
-      {
-        titulo: 'Universidad Interamericana – Contaduría Pública y Finanzas',
-        url: 'https://universidadinteramericana.edu.mx/producto/licenciatura-en-contaduria-publica-y-finanzas/',
+        titulo: 'Principios de contabilidad financiera – OpenStax (en inglés)',
+        url: 'https://openstax.org/details/books/principles-financial-accounting',
       },
     ],
     contacto: {
@@ -119,16 +145,19 @@ export const cursos: Curso[] = [
   {
     id: 3,
     nombre: 'Administración Estratégica de Empresas',
+    imagenApoyo: {
+      url: 'https://live.staticflickr.com/4051/5126106846_68d32ba724_b.jpg',
+      alt: 'Tarjetas con ideas para planificar una estrategia',
+      fuenteUrl: 'https://www.flickr.com/photos/55260169@N07/5126106846',
+      credito: 'plantoo47',
+      licencia: 'CC BY-SA 2.0',
+      licenciaUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
+    },
     materialApoyo: [
       {
-        titulo: 'UNAM – Facultad de Contaduría y Administración',
-        url: 'https://www.fca.unam.mx/',
+        titulo: 'Gestión estratégica y ventaja competitiva – OpenStax (en inglés)',
+        url: 'https://openstax.org/books/principles-management/pages/9-introduction',
       },
-      {
-        titulo: 'UAEH – Repositorio Institucional',
-        url: 'https://repository.uaeh.edu.mx/',
-      },
-      { titulo: 'UDG – CUCEA', url: 'https://www.cucea.udg.mx/' },
     ],
     contacto: {
       correo: 'estrategia@facultad.edu.mx',
@@ -151,30 +180,30 @@ export const cursos: Curso[] = [
     },
     videos: [
       {
-        titulo: 'UNAM – Conferencias sobre administración estratégica',
-        url: 'https://www.youtube.com/results?search_query=UNAM+conferencia+administraci%C3%B3n+estrat%C3%A9gica+empresas',
+        titulo: 'Administración estratégica en la UNAM: caso de éxito',
+        url: 'https://www.youtube.com/embed/XvjhdBHOojE',
       },
       {
-        titulo: 'UDG – Estrategia y gestión empresarial',
-        url: 'https://www.youtube.com/results?search_query=UDG+estrategia+gesti%C3%B3n+empresarial+conferencia',
+        titulo: 'Conferencia de estrategia empresarial: Modelo Delta',
+        url: 'https://www.youtube.com/embed/T4WOfrVZ-qM',
       },
     ],
   },
   {
     id: 4,
     nombre: 'Excel para Contadores y Administradores',
+    imagenApoyo: {
+      url: 'https://live.staticflickr.com/1101/979975865_cf6d5ee643.jpg',
+      alt: 'Presupuesto y documentos de planificación financiera',
+      fuenteUrl: 'https://www.flickr.com/photos/75755822@N00/979975865',
+      credito: 'jamingray',
+      licencia: 'CC BY-SA 2.0',
+      licenciaUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
+    },
     materialApoyo: [
       {
-        titulo: 'Microsoft Excel – Soporte',
+        titulo: 'Ayuda y formación de Excel – Microsoft',
         url: 'https://support.microsoft.com/es-es/excel',
-      },
-      {
-        titulo: 'Microsoft Learn',
-        url: 'https://learn.microsoft.com/es-mx/training/',
-      },
-      {
-        titulo: 'Microsoft Create – Plantillas de Excel',
-        url: 'https://create.microsoft.com/es-es/search?query=excel',
       },
     ],
     contacto: {
@@ -210,16 +239,19 @@ export const cursos: Curso[] = [
   {
     id: 5,
     nombre: 'Marketing Digital y Gestión de Negocios',
+    imagenApoyo: {
+      url: 'https://live.staticflickr.com/4098/4791983384_b9936e2580_b.jpg',
+      alt: 'Material visual de una estrategia de marketing digital',
+      fuenteUrl: 'https://www.flickr.com/photos/23300119@N03/4791983384',
+      credito: 'Maria Reyes-McDavis',
+      licencia: 'CC BY-SA 2.0',
+      licenciaUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
+    },
     materialApoyo: [
       {
-        titulo: 'HubSpot Academy – Marketing Digital',
+        titulo: 'Curso de marketing digital – HubSpot Academy',
         url: 'https://academy.hubspot.com/es/courses/digital-marketing',
       },
-      {
-        titulo: 'HubSpot Academy – Fundamentos de Marketing Digital',
-        url: 'https://academy.hubspot.com/es/lessons/digital-marketing-fundamentals',
-      },
-      { titulo: 'Google Skillshop', url: 'https://skillshop.withgoogle.com/' },
     ],
     contacto: {
       correo: 'marketing@facultad.edu.mx',
@@ -255,22 +287,18 @@ export const cursos: Curso[] = [
   {
     id: 6,
     nombre: 'Emprendimiento y Creación de Modelos de Negocio',
+    imagenApoyo: {
+      url: 'https://live.staticflickr.com/7372/10659974933_c2a506b281_b.jpg',
+      alt: 'Emprendedor presentando una idea de negocio',
+      fuenteUrl: 'https://www.flickr.com/photos/82878259@N00/10659974933',
+      credito: 'CharlesUibel',
+      licencia: 'CC BY 2.0',
+      licenciaUrl: 'https://creativecommons.org/licenses/by/2.0/',
+    },
     materialApoyo: [
       {
-        titulo: 'CONALEP – Modelo de emprendimiento',
-        url: 'https://conalepveracruz.edu.mx/wp-content/uploads/2024/03/Modelo-de-emprendimiento-CONALEP.pdf',
-      },
-      {
-        titulo: 'UABC – Facultad de Ciencias Administrativas',
-        url: 'https://fcias.uabc.edu.mx/',
-      },
-      {
-        titulo: 'Tecnológico de Monterrey – Emprendimiento',
-        url: 'https://tec.mx/es/emprendimiento',
-      },
-      {
-        titulo: 'LibreTexts Español – Recursos sugeridos de emprendimiento',
-        url: 'https://espanol.libretexts.org/Bookshelves/Negocio/Negocios/Emprendimiento/Libro%3A_Emprendimiento_%28OpenStax%29/02%3A_El_viaje_y_los_caminos_empresariales/2.09%3A_Recursos_sugeridos',
+        titulo: 'Emprendimiento – OpenStax, edición en español de LibreTexts',
+        url: 'https://espanol.libretexts.org/Bookshelves/Negocio/Negocios/Emprendimiento/Libro%3A_Emprendimiento_%28OpenStax%29',
       },
     ],
     contacto: {
@@ -298,25 +326,31 @@ export const cursos: Curso[] = [
     },
     videos: [
       {
-        titulo: 'Explicación del lienzo del modelo de negocio',
-        url: 'https://www.youtube.com/embed/QOAOZMTLP5s',
+        titulo: 'Modelo Canvas explicado paso a paso con ejemplo',
+        url: 'https://www.youtube.com/embed/OnvW8vbM02U',
       },
       {
-        titulo: 'Dream Further – Diseño de proyectos emprendedores',
-        url: 'https://www.youtube.com/embed/UbQ3AW85VRo',
+        titulo: 'Taller: diseño de un modelo de negocios innovador',
+        url: 'https://www.youtube.com/embed/7EBIpn68Hnw',
       },
     ],
   },
   {
     id: 7,
     nombre: 'Gestión del Talento y Recursos Humanos',
+    imagenApoyo: {
+      url: 'https://live.staticflickr.com/5638/20740672110_d1ca81fdcb_b.jpg',
+      alt: 'Equipo de Recursos Humanos trabajando en conjunto',
+      fuenteUrl: 'https://www.flickr.com/photos/21187388@N06/20740672110',
+      credito: 'University of the Fraser Valley',
+      licencia: 'CC BY 2.0',
+      licenciaUrl: 'https://creativecommons.org/licenses/by/2.0/',
+    },
     materialApoyo: [
       {
-        titulo: 'UNAM – Facultad de Contaduría y Administración',
-        url: 'https://www.fca.unam.mx/',
+        titulo: 'Comportamiento organizacional – OpenStax (en inglés)',
+        url: 'https://openstax.org/details/books/organizational-behavior',
       },
-      { titulo: 'UANL – FACPYA', url: 'https://facpya.uanl.mx/' },
-      { titulo: 'UDG – CUCEA', url: 'https://www.cucea.udg.mx/' },
     ],
     contacto: {
       correo: 'recursoshumanos@facultad.edu.mx',
@@ -343,30 +377,30 @@ export const cursos: Curso[] = [
     },
     videos: [
       {
-        titulo: 'LinkedIn Talent Solutions – Reclutamiento y selección',
-        url: 'https://www.youtube.com/results?search_query=LinkedIn+Talent+Solutions+reclutamiento+selecci%C3%B3n',
+        titulo: 'LinkedIn Talent Solutions: soluciones para selección de personal',
+        url: 'https://www.youtube.com/embed/AAR_YhsKZK4',
       },
       {
-        titulo: 'SHRM – Liderazgo y gestión del talento',
-        url: 'https://www.youtube.com/results?search_query=SHRM+liderazgo+gesti%C3%B3n+del+talento',
+        titulo: 'SHRM: panel intergeneracional de líderes de Recursos Humanos',
+        url: 'https://www.youtube.com/embed/vxelDrq7kJI',
       },
     ],
   },
   {
     id: 8,
     nombre: 'Inteligencia de Negocios y Análisis de Datos',
+    imagenApoyo: {
+      url: 'https://live.staticflickr.com/8072/29489453303_576bd97a06_b.jpg',
+      alt: 'Presentación sobre análisis de grandes volúmenes de datos',
+      fuenteUrl: 'https://www.flickr.com/photos/80824546@N00/29489453303',
+      credito: 'infomatique',
+      licencia: 'CC BY-SA 2.0',
+      licenciaUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
+    },
     materialApoyo: [
       {
-        titulo: 'Microsoft Learn – Power BI',
-        url: 'https://learn.microsoft.com/es-mx/training/powerplatform/power-bi/',
-      },
-      {
-        titulo: 'Microsoft Learn – Análisis de datos',
+        titulo: 'Introducción al análisis de datos con Microsoft Power BI',
         url: 'https://learn.microsoft.com/es-mx/training/paths/data-analytics-microsoft/',
-      },
-      {
-        titulo: 'Microsoft Learn – Modelado de datos con Power BI',
-        url: 'https://learn.microsoft.com/es-mx/training/paths/model-data-power-bi/',
       },
     ],
     contacto: {
@@ -391,30 +425,30 @@ export const cursos: Curso[] = [
     },
     videos: [
       {
-        titulo: 'Microsoft Power BI – Tutoriales oficiales',
-        url: 'https://www.youtube.com/results?search_query=Microsoft+Power+BI+canal+oficial+tutorial+espa%C3%B1ol',
+        titulo: 'Cómo usar Power BI: tutorial desde cero',
+        url: 'https://www.youtube.com/embed/pwJuFbyhZFE',
       },
       {
-        titulo: 'Microsoft Power BI – Análisis y visualización de datos',
-        url: 'https://www.youtube.com/results?search_query=Microsoft+Power+BI+an%C3%A1lisis+visualizaci%C3%B3n+datos+espa%C3%B1ol',
+        titulo: 'Cómo crear informes en Power BI',
+        url: 'https://www.youtube.com/embed/X0D4zPeCPZ0',
       },
     ],
   },
   {
     id: 9,
     nombre: 'Innovación y Transformación Digital Empresarial',
+    imagenApoyo: {
+      url: 'https://live.staticflickr.com/7572/15251834103_52069eb279_b.jpg',
+      alt: 'Interfaz digital experimental presentada en un laboratorio de innovación',
+      fuenteUrl: 'https://www.flickr.com/photos/67540051@N03/15251834103',
+      credito: 'NYC Media Lab',
+      licencia: 'CC BY-SA 2.0',
+      licenciaUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
+    },
     materialApoyo: [
       {
-        titulo: 'Microsoft Learn',
-        url: 'https://learn.microsoft.com/es-mx/training/',
-      },
-      {
-        titulo: 'UABC – Inteligencia de Negocios',
+        titulo: 'Inteligencia de Negocios – Facultad de Ciencias Administrativas, UABC',
         url: 'https://fcias.uabc.edu.mx/inteligencia-de-negocios/',
-      },
-      {
-        titulo: 'Tecnológico de Monterrey – Emprendimiento',
-        url: 'https://www.tec.mx/es/emprendimiento',
       },
     ],
     contacto: {
@@ -451,15 +485,18 @@ export const cursos: Curso[] = [
   {
     id: 10,
     nombre: 'Fiscalidad y Obligaciones Empresariales',
+    imagenApoyo: {
+      url: 'https://live.staticflickr.com/33/40890499_629164fa72_b.jpg',
+      alt: 'Calculadora de bolsillo para realizar cálculos fiscales',
+      fuenteUrl: 'https://www.flickr.com/photos/45581782@N00/40890499',
+      credito: 'psd',
+      licencia: 'CC BY 2.0',
+      licenciaUrl: 'https://creativecommons.org/licenses/by/2.0/',
+    },
     materialApoyo: [
-      { titulo: 'SAT – Portal oficial', url: 'https://www.sat.gob.mx/' },
       {
-        titulo: 'SAT – Obligaciones fiscales de empresas',
+        titulo: 'Conoce las obligaciones fiscales del régimen de actividades empresariales – SAT',
         url: 'https://wwwmat.sat.gob.mx/consulta/30167/conoce-cuales-son-las-obligaciones-fiscales-del-regimen-de-actividades-empresariales',
-      },
-      {
-        titulo: 'SAT – Declaración Anual Empresas',
-        url: 'https://www.sat.gob.mx/minisitio/DeclaracionAnual/Empresas/index.html',
       },
     ],
     contacto: {

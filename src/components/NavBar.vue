@@ -8,7 +8,7 @@
       <div class="enlaces">
           <RouterLink to="/Inicio" class="nav-link inicio">Inicio</RouterLink>
           <RouterLink to="/cursos" class="nav-link">Cursos</RouterLink>
-          <RouterLink to="/mis-cursos" class="nav-link">Mis Cursos</RouterLink>
+          <RouterLink to="/inscripciones" class="nav-link">Inscribirme</RouterLink>
         </div>
     </nav>
   </header>

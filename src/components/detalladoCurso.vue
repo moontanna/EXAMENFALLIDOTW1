@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { cursos } from '../data/cursos'
+import { getCursoById } from '../bases/impfunciones'
 
 const route = useRoute()
 
@@ -12,10 +12,11 @@ const secciones = [
   { titulo: 'Empresas de referencia', id: 'empresas-referencia' },
   { titulo: 'Caso de éxito', id: 'caso-exito' },
   { titulo: 'Videos', id: 'videos' },
+  { titulo: 'Documentos y recursos', id: 'documentos-recursos' },
 ]
 
 const curso = computed(() => {
-  return cursos.find((item) => item.id === Number(route.params.id))
+  return getCursoById(Number(route.params.id))
 })
 </script>
 
@@ -39,16 +40,18 @@ const curso = computed(() => {
       <div class="contenido">
         <RouterLink to="/cursos" class="volver">← Volver a los cursos</RouterLink>
         <h1>{{ curso.nombre }}</h1>
+        <RouterLink
+          :to="{ name: 'inscripciones', query: { curso: curso.id } }"
+          class="boton-inscripcion"
+        >
+          Inscribirme a este curso
+        </RouterLink>
 
         <section id="material-apoyo">
-          <h2>Material de apoyo</h2>
-          <ul>
-            <li v-for="material in curso.materialApoyo" :key="material.url">
-              <a :href="material.url" target="_blank" rel="noopener noreferrer">
-                {{ material.titulo }}
-              </a>
-            </li>
-          </ul>
+          <figure class="imagen-apoyo">
+            <img :src="curso.imagenApoyo.url" :alt="curso.imagenApoyo.alt" loading="lazy" />
+          </figure>
+         
         </section>
 
         <section id="contacto">
@@ -106,6 +109,27 @@ const curso = computed(() => {
               </a>
             </article>
           </div>
+        </section>
+
+        <section id="documentos-recursos">
+          <h2>Material de apoyo</h2>
+          <h2>Documentos y recursos</h2>
+          <ul>
+            <li v-for="material in curso.materialApoyo" :key="material.url">
+              <a :href="material.url" target="_blank" rel="noopener noreferrer">
+                {{ material.titulo }}
+              </a>
+            </li>
+            <li>
+              <a :href="curso.imagenApoyo.fuenteUrl" target="_blank" rel="noopener noreferrer">
+                Crédito de la imagen: {{ curso.imagenApoyo.credito }}
+              </a>
+              ·
+              <a :href="curso.imagenApoyo.licenciaUrl" target="_blank" rel="noopener noreferrer">
+                {{ curso.imagenApoyo.licencia }}
+              </a>
+            </li>
+          </ul>
         </section>
       </div>
     </div>
@@ -190,6 +214,21 @@ const curso = computed(() => {
   color: var(--brand-purple);
 }
 
+.boton-inscripcion {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 24px;
+  background: var(--brand-purple);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.boton-inscripcion:hover,
+.boton-inscripcion:focus-visible {
+  background: var(--brand-purple-deep);
+}
+
 .detalle-curso,
 section,
 .content,
@@ -232,6 +271,18 @@ p {
 ul {
   margin: 0;
   padding-left: 22px;
+}
+
+.imagen-apoyo {
+  margin: 0 0 16px;
+}
+
+.imagen-apoyo img {
+  display: block;
+  width: min(100%, 720px);
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
 .videos-grid {

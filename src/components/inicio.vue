@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { cursos } from '../data/cursos'
+import { getCursosByFiltro } from '../bases/impfunciones'
 
-const idsDestacados = [1, 4, 5, 8, 9]
-const cursosDestacados = computed(() =>
-  cursos.filter((curso) => idsDestacados.includes(curso.id)),
-)
+const cursosDestacados = computed(() => getCursosByFiltro('destacados'))
 const indiceDestacado = ref(0)
 const cursoActual = computed(
   () => cursosDestacados.value[indiceDestacado.value],
@@ -51,7 +48,14 @@ function cambiarDestacado(direccion: number) {
           </div>
           <div class="informacion">
             <p class="programa">Cursos UADY</p>
-            <h3>{{ cursoActual.nombre }}</h3>
+            <h3>
+              <RouterLink
+                :to="{ name: 'detalle-curso', params: { id: cursoActual.id } }"
+                class="enlace-curso"
+              >
+                {{ cursoActual.nombre }}
+              </RouterLink>
+            </h3>
           </div>
         </article>
 
@@ -180,6 +184,17 @@ function cambiarDestacado(direccion: number) {
   color: var(--brand-purple-deep);
   font-size: 20px;
   line-height: 1.35;
+}
+
+.enlace-curso {
+  color: inherit;
+  text-decoration: none;
+}
+
+.enlace-curso:hover,
+.enlace-curso:focus-visible {
+  color: var(--brand-purple);
+  text-decoration: underline;
 }
 
 .carrusel-control {
