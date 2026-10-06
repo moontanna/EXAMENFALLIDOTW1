@@ -6,13 +6,12 @@ import { getCursoById } from '../bases/impfunciones'
 const route = useRoute()
 
 const secciones = [
-  { titulo: 'Material de apoyo', id: 'material-apoyo' },
-  { titulo: 'Contacto', id: 'contacto' },
   { titulo: 'Certificaciones', id: 'certificaciones' },
-  { titulo: 'Empresas de referencia', id: 'empresas-referencia' },
+  { titulo: 'Empresas afiliadas', id: 'empresas-afiliadas' },
   { titulo: 'Caso de éxito', id: 'caso-exito' },
+  { titulo: 'Material de apoyo', id: 'material-apoyo' },
   { titulo: 'Videos', id: 'videos' },
-  { titulo: 'Documentos y recursos', id: 'documentos-recursos' },
+  { titulo: 'Contacto', id: 'contacto' },
 ]
 
 const curso = computed(() => {
@@ -26,6 +25,11 @@ const curso = computed(() => {
       <aside class="indice">
         <p class="indice-titulo">Contenido</p>
         <nav class="indice-nav">
+          <RouterLink
+            :to="{ name: 'inscripciones', query: { curso: curso.id } }"
+          >
+            Inscripciones
+          </RouterLink>
           <template v-for="seccion in secciones" :key="seccion.id">
             <a
               v-if="seccion.id !== 'videos' || curso.videos.length"
@@ -47,25 +51,6 @@ const curso = computed(() => {
           Inscribirme a este curso
         </RouterLink>
 
-        <section id="material-apoyo">
-          <figure class="imagen-apoyo">
-            <img :src="curso.imagenApoyo.url" :alt="curso.imagenApoyo.alt" loading="lazy" />
-          </figure>
-         
-        </section>
-
-        <section id="contacto">
-          <h2>Contacto</h2>
-          <p>
-            Correo:
-            <a :href="`mailto:${curso.contacto.correo}`">
-              {{ curso.contacto.correo }}
-            </a>
-          </p>
-          <p>Teléfono: {{ curso.contacto.telefono }}</p>
-          <p v-if="curso.contacto.horario">Horario: {{ curso.contacto.horario }}</p>
-        </section>
-
         <section id="certificaciones">
           <h2>Certificaciones</h2>
           <ul>
@@ -75,8 +60,8 @@ const curso = computed(() => {
           </ul>
         </section>
 
-        <section id="empresas-referencia">
-          <h2>Empresas de referencia</h2>
+        <section id="empresas-afiliadas">
+          <h2>Empresas afiliadas</h2>
           <ul>
             <li v-for="empresa in curso.empresasReferencia" :key="empresa.url">
               <a :href="empresa.url" target="_blank" rel="noopener noreferrer">
@@ -87,9 +72,23 @@ const curso = computed(() => {
         </section>
 
         <section id="caso-exito">
-          <h2>Caso de éxito</h2>
-          <h3>{{ curso.casoDeExito.empresa }}</h3>
+          <h2>Historia de éxito</h2>
+          <h3>{{ curso.casoDeExito.persona }}</h3>
           <p>{{ curso.casoDeExito.descripcion }}</p>
+        </section>
+
+        <section id="material-apoyo">
+          <h2>Material de apoyo</h2>
+          <figure class="imagen-apoyo">
+            <img :src="curso.imagenApoyo.url" :alt="curso.imagenApoyo.alt" loading="lazy" />
+          </figure>
+          <ul>
+            <li v-for="material in curso.materialApoyo" :key="material.url">
+              <a :href="material.url" target="_blank" rel="noopener noreferrer">
+                {{ material.titulo }}
+              </a>
+            </li>
+          </ul>
         </section>
 
         <section v-if="curso.videos.length" id="videos">
@@ -111,34 +110,28 @@ const curso = computed(() => {
           </div>
         </section>
 
-        <section id="documentos-recursos">
-          <h2>Material de apoyo</h2>
-          <h2>Documentos y recursos</h2>
-          <ul>
-            <li v-for="material in curso.materialApoyo" :key="material.url">
-              <a :href="material.url" target="_blank" rel="noopener noreferrer">
-                {{ material.titulo }}
-              </a>
-            </li>
-            <li>
-              <a :href="curso.imagenApoyo.fuenteUrl" target="_blank" rel="noopener noreferrer">
-                Crédito de la imagen: {{ curso.imagenApoyo.credito }}
-              </a>
-              ·
-              <a :href="curso.imagenApoyo.licenciaUrl" target="_blank" rel="noopener noreferrer">
-                {{ curso.imagenApoyo.licencia }}
-              </a>
-            </li>
-          </ul>
+        <section id="contacto">
+          <h2>Contacto</h2>
+          <p>
+            Correo:
+            <a :href="`mailto:${curso.contacto.correo}`">
+              {{ curso.contacto.correo }}
+            </a>
+          </p>
+          <p>Teléfono: {{ curso.contacto.telefono }}</p>
+          <p v-if="curso.contacto.horario">Horario: {{ curso.contacto.horario }}</p>
         </section>
+
       </div>
     </div>
   </main>
-
+  
   <main v-else class="detalle-curso">
     <h1>No se encontró el curso</h1>
     <RouterLink to="/cursos" class="volver">Volver al catálogo</RouterLink>
   </main>
+
+  
 </template>
 
 <style scoped>

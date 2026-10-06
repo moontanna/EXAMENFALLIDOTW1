@@ -3,16 +3,18 @@
     <div class="footer-principal">
       <a
         class="marca"
-        href="https://www.uady.mx/"
-        target="_blank"
-        rel="noopener noreferrer"
         aria-label="Universidad Autónoma de Yucatán"
+       
       >
         <strong class="marca-texto">UADY</strong>
+       
       </a>
 
-      <div class="aviso">
-       <RouterLink to="/aviso-privacidad" class="aviso">Aviso de Privacidad</RouterLink>
+      <div class="footer-mensaje">
+        <strong class="marca-subtexto">Cursos gratuitos para ti</strong>
+        <RouterLink to="/aviso-privacidad" class="aviso-link">
+          Aviso de Privacidad
+        </RouterLink>
         <p class="coordinacion">
           Coordinación General de Tecnologías de Información y Comunicación
         </p>
@@ -102,13 +104,27 @@
   font-weight: 400;
   letter-spacing: 1px;
 }
+.marca-subtexto {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
 
-.aviso {
+.footer-mensaje {
+  display: flex;
+  flex-direction: column;
   max-width: 1000px;
   justify-self: center;
+  align-items: center;
+  gap: 6px;
   text-align: center;
   line-height: 1.6;
-  color:whitesmoke;
+  color: whitesmoke;
+}
+
+.aviso-link {
+  color: inherit;
 }
 
 .coordinacion {

@@ -12,10 +12,6 @@ export interface Contacto {
 export interface ImagenApoyo {
   url: string
   alt: string
-  fuenteUrl: string
-  credito: string
-  licencia: string
-  licenciaUrl: string
 }
 
 export interface Curso {
@@ -27,7 +23,7 @@ export interface Curso {
   certificaciones: string[]
   empresasReferencia: Enlace[]
   casoDeExito: {
-    empresa: string
+    persona: string
     descripcion: string
   }
   videos: Enlace[]
@@ -51,15 +47,15 @@ export const cursos: Curso[] = [
     imagenApoyo: {
       url: 'https://live.staticflickr.com/5756/21184692654_210b362269_b.jpg',
       alt: 'Panel de discusión en un foro de finanzas corporativas',
-      fuenteUrl: 'https://www.flickr.com/photos/134633001@N07/21184692654',
-      credito: 'falcongrp',
-      licencia: 'CC BY-SA 2.0',
-      licenciaUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
     },
     materialApoyo: [
       {
         titulo: 'Guía para el sustentante del examen EUC-FINEM – CENEVAL/IMCP',
         url: 'https://ceneval.edu.mx/examenes-certificacion-euc_finem/',
+      },
+      {
+        titulo: 'Atribución de imagen: falcongrp (CC BY-SA 2.0)',
+        url: 'https://www.flickr.com/photos/134633001@N07/21184692654',
       },
     ],
     contacto: {
@@ -78,9 +74,9 @@ export const cursos: Curso[] = [
       { titulo: 'KPMG México', url: 'https://kpmg.com/mx/es/home.html' },
     ],
     casoDeExito: {
-      empresa: 'BBVA',
+      persona: 'Mariana, analista financiera',
       descripcion:
-        'Análisis financiero y utilización de herramientas digitales para apoyar la toma de decisiones empresariales.',
+        'Después de tomar el curso, Mariana aprendió a interpretar estados financieros y comparar escenarios. Aplicó esas herramientas en su empresa y ahora presenta recomendaciones que ayudan a su equipo a tomar mejores decisiones.',
     },
     videos: [
       {
@@ -99,17 +95,15 @@ export const cursos: Curso[] = [
     imagenApoyo: {
       url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Camp_Chesterfield_general_account_ledger,_1910-1916_-_DPLA_-_206e8c73ecb9419118717c75562a2497_(page_12).jpg',
       alt: 'Página de un libro mayor contable histórico',
-      fuenteUrl:
-        'https://commons.wikimedia.org/wiki/File:Camp_Chesterfield_general_account_ledger,_1910-1916_-_DPLA_-_206e8c73ecb9419118717c75562a2497_(page_12).jpg',
-      credito: 'DPLA / Indiana Memory; autor no identificado',
-      licencia: 'Dominio público en EE. UU.',
-      licenciaUrl:
-        'https://commons.wikimedia.org/wiki/File:Camp_Chesterfield_general_account_ledger,_1910-1916_-_DPLA_-_206e8c73ecb9419118717c75562a2497_(page_12).jpg',
     },
     materialApoyo: [
       {
         titulo: 'Principios de contabilidad financiera – OpenStax (en inglés)',
         url: 'https://openstax.org/details/books/principles-financial-accounting',
+      },
+      {
+        titulo: 'Atribución de imagen: DPLA / Indiana Memory (dominio público en EE. UU.)',
+        url: 'https://commons.wikimedia.org/wiki/File:Camp_Chesterfield_general_account_ledger,_1910-1916_-_DPLA_-_206e8c73ecb9419118717c75562a2497_(page_12).jpg',
       },
     ],
     contacto: {
@@ -127,9 +121,9 @@ export const cursos: Curso[] = [
       { titulo: 'Deloitte México', url: 'https://www.deloitte.com/mx/es.html' },
     ],
     casoDeExito: {
-      empresa: 'PwC',
+      persona: 'Luis, emprendedor',
       descripcion:
-        'Utilización de herramientas contables y financieras para apoyar a empresas en el control de sus operaciones y cumplimiento de obligaciones.',
+        'Luis llevaba las cuentas de su pequeño negocio de manera informal. Tras tomar el curso, organizó sus ingresos y gastos, mejoró el control de sus obligaciones y pudo enfocar sus esfuerzos en hacer crecer su emprendimiento.',
     },
     videos: [
       {
@@ -148,15 +142,15 @@ export const cursos: Curso[] = [
     imagenApoyo: {
       url: 'https://live.staticflickr.com/4051/5126106846_68d32ba724_b.jpg',
       alt: 'Tarjetas con ideas para planificar una estrategia',
-      fuenteUrl: 'https://www.flickr.com/photos/55260169@N07/5126106846',
-      credito: 'plantoo47',
-      licencia: 'CC BY-SA 2.0',
-      licenciaUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
     },
     materialApoyo: [
       {
         titulo: 'Gestión estratégica y ventaja competitiva – OpenStax (en inglés)',
         url: 'https://openstax.org/books/principles-management/pages/9-introduction',
+      },
+      {
+        titulo: 'Atribución de imagen: plantoo47 (CC BY-SA 2.0)',
+        url: 'https://www.flickr.com/photos/55260169@N07/5126106846',
       },
     ],
     contacto: {
@@ -174,9 +168,9 @@ export const cursos: Curso[] = [
       { titulo: 'Walmart México', url: 'https://www.walmart.com.mx/' },
     ],
     casoDeExito: {
-      empresa: 'Grupo Bimbo',
+      persona: 'Andrea, coordinadora de proyectos',
       descripcion:
-        'Crecimiento y expansión internacional mediante estrategias de diversificación, innovación y desarrollo de mercados.',
+        'Después del curso, Andrea empezó a analizar el mercado y definir objetivos medibles para los proyectos de su equipo. Con una estrategia más clara, asumió la coordinación de nuevas iniciativas y avanzó profesionalmente.',
     },
     videos: [
       {
@@ -195,15 +189,15 @@ export const cursos: Curso[] = [
     imagenApoyo: {
       url: 'https://live.staticflickr.com/1101/979975865_cf6d5ee643.jpg',
       alt: 'Presupuesto y documentos de planificación financiera',
-      fuenteUrl: 'https://www.flickr.com/photos/75755822@N00/979975865',
-      credito: 'jamingray',
-      licencia: 'CC BY-SA 2.0',
-      licenciaUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
     },
     materialApoyo: [
       {
         titulo: 'Ayuda y formación de Excel – Microsoft',
         url: 'https://support.microsoft.com/es-es/excel',
+      },
+      {
+        titulo: 'Atribución de imagen: jamingray (CC BY-SA 2.0)',
+        url: 'https://www.flickr.com/photos/75755822@N00/979975865',
       },
     ],
     contacto: {
@@ -221,9 +215,9 @@ export const cursos: Curso[] = [
       { titulo: 'KPMG México', url: 'https://kpmg.com/mx/es/home.html' },
     ],
     casoDeExito: {
-      empresa: 'Microsoft',
+      persona: 'José, auxiliar administrativo',
       descripcion:
-        'Excel se utiliza ampliamente para organizar datos, realizar cálculos, elaborar reportes y analizar información empresarial.',
+        'José tomó el curso para mejorar sus habilidades con Excel. Aprendió a automatizar reportes y analizar datos, redujo el tiempo dedicado a tareas repetitivas y obtuvo una oportunidad como analista administrativo.',
     },
     videos: [
       {
@@ -242,15 +236,15 @@ export const cursos: Curso[] = [
     imagenApoyo: {
       url: 'https://live.staticflickr.com/4098/4791983384_b9936e2580_b.jpg',
       alt: 'Material visual de una estrategia de marketing digital',
-      fuenteUrl: 'https://www.flickr.com/photos/23300119@N03/4791983384',
-      credito: 'Maria Reyes-McDavis',
-      licencia: 'CC BY-SA 2.0',
-      licenciaUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
     },
     materialApoyo: [
       {
         titulo: 'Curso de marketing digital – HubSpot Academy',
         url: 'https://academy.hubspot.com/es/courses/digital-marketing',
+      },
+      {
+        titulo: 'Atribución de imagen: Maria Reyes-McDavis (CC BY-SA 2.0)',
+        url: 'https://www.flickr.com/photos/23300119@N03/4791983384',
       },
     ],
     contacto: {
@@ -269,9 +263,9 @@ export const cursos: Curso[] = [
       { titulo: 'Meta', url: 'https://www.meta.com/' },
     ],
     casoDeExito: {
-      empresa: 'HubSpot',
+      persona: 'Sofía, emprendedora',
       descripcion:
-        'Desarrollo de estrategias de marketing digital basadas en contenido, automatización, análisis de datos y gestión de clientes.',
+        'Sofía aplicó lo aprendido para definir a quién quería llegar y planear contenido para su tienda en línea. Al revisar los resultados de sus campañas, pudo mejorar su estrategia y consolidar su negocio.',
     },
     videos: [
       {
@@ -290,15 +284,15 @@ export const cursos: Curso[] = [
     imagenApoyo: {
       url: 'https://live.staticflickr.com/7372/10659974933_c2a506b281_b.jpg',
       alt: 'Emprendedor presentando una idea de negocio',
-      fuenteUrl: 'https://www.flickr.com/photos/82878259@N00/10659974933',
-      credito: 'CharlesUibel',
-      licencia: 'CC BY 2.0',
-      licenciaUrl: 'https://creativecommons.org/licenses/by/2.0/',
     },
     materialApoyo: [
       {
         titulo: 'Emprendimiento – OpenStax, edición en español de LibreTexts',
         url: 'https://espanol.libretexts.org/Bookshelves/Negocio/Negocios/Emprendimiento/Libro%3A_Emprendimiento_%28OpenStax%29',
+      },
+      {
+        titulo: 'Atribución de imagen: CharlesUibel (CC BY 2.0)',
+        url: 'https://www.flickr.com/photos/82878259@N00/10659974933',
       },
     ],
     contacto: {
@@ -320,9 +314,9 @@ export const cursos: Curso[] = [
       },
     ],
     casoDeExito: {
-      empresa: 'Y Combinator',
+      persona: 'Diego, creador de un emprendimiento',
       descripcion:
-        'Aceleradora que ha apoyado la creación y crecimiento de numerosas empresas tecnológicas mediante modelos de negocio escalables.',
+        'Diego tenía una idea, pero no sabía cómo convertirla en un negocio. Con las herramientas del curso diseñó y puso a prueba su modelo de negocio, consiguió sus primeros clientes y hoy mantiene un emprendimiento en crecimiento.',
     },
     videos: [
       {
@@ -341,15 +335,15 @@ export const cursos: Curso[] = [
     imagenApoyo: {
       url: 'https://live.staticflickr.com/5638/20740672110_d1ca81fdcb_b.jpg',
       alt: 'Equipo de Recursos Humanos trabajando en conjunto',
-      fuenteUrl: 'https://www.flickr.com/photos/21187388@N06/20740672110',
-      credito: 'University of the Fraser Valley',
-      licencia: 'CC BY 2.0',
-      licenciaUrl: 'https://creativecommons.org/licenses/by/2.0/',
     },
     materialApoyo: [
       {
         titulo: 'Comportamiento organizacional – OpenStax (en inglés)',
         url: 'https://openstax.org/details/books/organizational-behavior',
+      },
+      {
+        titulo: 'Atribución de imagen: University of the Fraser Valley (CC BY 2.0)',
+        url: 'https://www.flickr.com/photos/21187388@N06/20740672110',
       },
     ],
     contacto: {
@@ -371,9 +365,9 @@ export const cursos: Curso[] = [
       { titulo: 'Deloitte México', url: 'https://www.deloitte.com/mx/es.html' },
     ],
     casoDeExito: {
-      empresa: 'LinkedIn',
+      persona: 'Paola, especialista de Recursos Humanos',
       descripcion:
-        'Utilización de herramientas digitales para facilitar procesos de reclutamiento, búsqueda de talento y desarrollo profesional.',
+        'Paola tomó el curso para mejorar sus procesos de selección y desarrollo de personal. Aplicó nuevas prácticas para identificar habilidades y acompañar al equipo; ahora coordina iniciativas de talento en su organización.',
     },
     videos: [
       {
@@ -392,15 +386,15 @@ export const cursos: Curso[] = [
     imagenApoyo: {
       url: 'https://live.staticflickr.com/8072/29489453303_576bd97a06_b.jpg',
       alt: 'Presentación sobre análisis de grandes volúmenes de datos',
-      fuenteUrl: 'https://www.flickr.com/photos/80824546@N00/29489453303',
-      credito: 'infomatique',
-      licencia: 'CC BY-SA 2.0',
-      licenciaUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
     },
     materialApoyo: [
       {
         titulo: 'Introducción al análisis de datos con Microsoft Power BI',
         url: 'https://learn.microsoft.com/es-mx/training/paths/data-analytics-microsoft/',
+      },
+      {
+        titulo: 'Atribución de imagen: infomatique (CC BY-SA 2.0)',
+        url: 'https://www.flickr.com/photos/80824546@N00/29489453303',
       },
     ],
     contacto: {
@@ -419,9 +413,9 @@ export const cursos: Curso[] = [
       { titulo: 'Oracle México', url: 'https://www.oracle.com/mx/' },
     ],
     casoDeExito: {
-      empresa: 'Microsoft Power BI',
+      persona: 'Raúl, analista de datos',
       descripcion:
-        'Permite transformar datos empresariales en reportes y paneles que facilitan el análisis y la toma de decisiones.',
+        'Raúl aprendió a organizar datos y crear paneles interactivos con Power BI. Sus reportes ayudaron a su equipo a detectar tendencias con mayor rapidez y le abrieron paso a un puesto de analista de inteligencia de negocios.',
     },
     videos: [
       {
@@ -440,15 +434,15 @@ export const cursos: Curso[] = [
     imagenApoyo: {
       url: 'https://live.staticflickr.com/7572/15251834103_52069eb279_b.jpg',
       alt: 'Interfaz digital experimental presentada en un laboratorio de innovación',
-      fuenteUrl: 'https://www.flickr.com/photos/67540051@N03/15251834103',
-      credito: 'NYC Media Lab',
-      licencia: 'CC BY-SA 2.0',
-      licenciaUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
     },
     materialApoyo: [
       {
         titulo: 'Inteligencia de Negocios – Facultad de Ciencias Administrativas, UABC',
         url: 'https://fcias.uabc.edu.mx/inteligencia-de-negocios/',
+      },
+      {
+        titulo: 'Atribución de imagen: NYC Media Lab (CC BY-SA 2.0)',
+        url: 'https://www.flickr.com/photos/67540051@N03/15251834103',
       },
     ],
     contacto: {
@@ -467,9 +461,9 @@ export const cursos: Curso[] = [
       { titulo: 'Telefónica', url: 'https://www.telefonica.com/' },
     ],
     casoDeExito: {
-      empresa: 'Telefónica',
+      persona: 'Elena, líder de transformación digital',
       descripcion:
-        'Ha implementado tecnologías como IoT, automatización y soluciones digitales dentro de sus procesos empresariales.',
+        'Elena tomó el curso para entender cómo incorporar tecnología a los procesos de su empresa. Después de evaluar las necesidades del equipo, impulsó una mejora digital que simplificó tareas y asumió el liderazgo de nuevos proyectos.',
     },
     videos: [
       {
@@ -488,15 +482,15 @@ export const cursos: Curso[] = [
     imagenApoyo: {
       url: 'https://live.staticflickr.com/33/40890499_629164fa72_b.jpg',
       alt: 'Calculadora de bolsillo para realizar cálculos fiscales',
-      fuenteUrl: 'https://www.flickr.com/photos/45581782@N00/40890499',
-      credito: 'psd',
-      licencia: 'CC BY 2.0',
-      licenciaUrl: 'https://creativecommons.org/licenses/by/2.0/',
     },
     materialApoyo: [
       {
         titulo: 'Conoce las obligaciones fiscales del régimen de actividades empresariales – SAT',
         url: 'https://wwwmat.sat.gob.mx/consulta/30167/conoce-cuales-son-las-obligaciones-fiscales-del-regimen-de-actividades-empresariales',
+      },
+      {
+        titulo: 'Atribución de imagen: psd (CC BY 2.0)',
+        url: 'https://www.flickr.com/photos/45581782@N00/40890499',
       },
     ],
     contacto: {
@@ -515,9 +509,9 @@ export const cursos: Curso[] = [
       { titulo: 'EY México', url: 'https://www.ey.com/es_mx' },
     ],
     casoDeExito: {
-      empresa: 'SAT',
+      persona: 'Carlos, responsable administrativo',
       descripcion:
-        'Utilización de plataformas digitales para facilitar la presentación de declaraciones, facturas electrónicas y cumplimiento de obligaciones fiscales.',
+        'Carlos tomó el curso para comprender mejor las obligaciones fiscales de su negocio. Organizó sus comprobantes y fechas importantes, mejoró su coordinación con el área contable y ahora lleva un control más ordenado de sus responsabilidades.',
     },
     videos: [
       {

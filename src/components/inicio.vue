@@ -80,6 +80,20 @@ function cambiarDestacado(direccion: number) {
           @click="indiceDestacado = indice"
         ></button>
       </div>
+      <figure class="imagen-contaduria">
+        <img
+          src="https://www.contadoresmexico.org.mx/Productos/img/45a-Semana-de-la-Contaduria-Publica-VDCP0226"
+          alt="Imagen de la Semana de la Contaduría Pública"
+          loading="lazy"
+        />
+      </figure>
+            <figure class="imagen-contaduria">
+        <img
+          src="https://st.mextudia.com/wp-content/uploads/2024/09/How-to-Find-Accountant-in-Manchester-1024x675-1-e1727201667946.jpeg"
+          loading="lazy"
+        />
+      </figure>
+     
     </section>
   </main>
 </template>
@@ -240,6 +254,27 @@ function cambiarDestacado(direccion: number) {
   opacity: 1;
 }
 
+.imagen-contaduria {
+  display: grid;
+  gap: 14px;
+  width: min(100%, 900px);
+  margin: 32px auto 0;
+  overflow: hidden;
+  border: 1px solid rgb(58 27 69 / 10%);
+  border-radius: 20px;
+  background: var(--brand-surface);
+  box-shadow: 0 12px 32px rgb(45 20 54 / 16%);
+}
+
+.imagen-contaduria img {
+  display: block;
+  width: 100%;
+  max-height: 480px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+}
+
 @media (max-width: 600px) {
   .pagina-inicio {
     width: min(100% - 32px, 440px);
@@ -258,6 +293,11 @@ function cambiarDestacado(direccion: number) {
     width: 34px;
     height: 34px;
     font-size: 24px;
+  }
+
+  .imagen-contaduria {
+    margin-top: 24px;
+    border-radius: 14px;
   }
 }
 </style>

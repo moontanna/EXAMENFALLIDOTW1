@@ -6,10 +6,10 @@
       </RouterLink>
 
       <div class="enlaces">
-          <RouterLink to="/Inicio" class="nav-link inicio">Inicio</RouterLink>
-          <RouterLink to="/cursos" class="nav-link">Cursos</RouterLink>
-          <RouterLink to="/inscripciones" class="nav-link">Inscribirme</RouterLink>
-        </div>
+        <RouterLink to="/Inicio" class="nav-link inicio">Inicio</RouterLink>
+        <RouterLink to="/cursos" class="nav-link">Cursos</RouterLink>
+        <RouterLink to="/inscripciones" class="nav-link">Inscribirme</RouterLink>
+      </div>
     </nav>
   </header>
 </template>
@@ -93,5 +93,4 @@
   background: var(--brand-gold);
   color: var(--brand-purple-deep);
 }
-
 </style>
