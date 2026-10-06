@@ -1,19 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Cursos from "../components/Cursos.vue";
-import Footer from "../components/Footer.vue";
-import HelloWorld from "../components/HelloWorld.vue";
-import Navbar from "../components/NavBar.vue";
+import Cursos from '../components/Cursos.vue'
+import DetalleCurso from '../components/detalladoCurso.vue'
+import Footer from '../components/Footer.vue'
+import Navbar from '../components/NavBar.vue'
+import AvisoPrivacidad from '../components/AvisoPrivacidad.vue'
+import Inicio from '../components/inicio.vue'
+
+
 
 const routes = [
-  { path: '/', name:'helloWorld', component: HelloWorld},
-  { path: '/cursos', name:'cursos', component: Cursos},
-  { path: '/footer', name:'footer', component: Footer},
-  { path: '/navbar', name:'navbar', component: Navbar}
-];
+  { path: '/', name: 'inicio', component: Inicio },
+  { path: '/cursos', name: 'cursos', component: Cursos },
+  { path: '/cursos/:id', name: 'detalle-curso', component: DetalleCurso },
+  { path: '/mis-cursos', name: 'mis-cursos', component: Cursos },
+  { path: '/footer', name: 'footer', component: Footer },
+  { path: '/navbar', name: 'navbar', component: Navbar },
+  { path: '/aviso-privacidad', name: 'aviso-privacidad', component: AvisoPrivacidad },
+  { path: '/inicio', redirect: '/' }
+]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
 
-export default router;
+export default router

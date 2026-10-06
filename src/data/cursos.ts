@@ -64,11 +64,11 @@ export const cursos: Curso[] = [
     videos: [
       {
         titulo: 'Tutorial Declaración Anual 2025 empresas – Estados financieros | SAT',
-        url: 'https://www.youtube.com/watch?v=PE4HoV7mnfI',
+        url: 'https://www.youtube.com/embed/PE4HoV7mnfI',
       },
       {
         titulo: 'Tutorial Declaración Anual 2025 empresas – Decreto Plan México | SAT',
-        url: 'https://www.youtube.com/watch?v=lR7ATra8WY4',
+        url: 'https://www.youtube.com/embed/lR7ATra8WY4',
       },
     ],
   },
@@ -108,11 +108,11 @@ export const cursos: Curso[] = [
     videos: [
       {
         titulo: 'Tutorial Declaración Anual 2025 empresas – Estados financieros | SAT',
-        url: 'https://www.youtube.com/watch?v=PE4HoV7mnfI',
+        url: 'https://www.youtube.com/embed/PE4HoV7mnfI',
       },
       {
         titulo: 'Tutorial Declaración Anual 2025 empresas – Decreto Plan México | SAT',
-        url: 'https://www.youtube.com/watch?v=lR7ATra8WY4',
+        url: 'https://www.youtube.com/embed/lR7ATra8WY4',
       },
     ],
   },
@@ -199,11 +199,11 @@ export const cursos: Curso[] = [
     videos: [
       {
         titulo: 'Curso de Microsoft Excel 2026 – Yoney Gallardo',
-        url: 'https://www.youtube.com/watch?v=Szqtg6idszg',
+        url: 'https://www.youtube.com/embed/Szqtg6idszg',
       },
       {
         titulo: 'Curso Excel completo para principiantes – Ciudadano 2.0',
-        url: 'https://www.youtube.com/watch?v=s76recy9xDg',
+        url: 'https://www.youtube.com/embed/s76recy9xDg',
       },
     ],
   },
@@ -244,11 +244,11 @@ export const cursos: Curso[] = [
     videos: [
       {
         titulo: '¿Qué es el curso de marketing digital? – HubSpot Español',
-        url: 'https://www.youtube.com/watch?v=mPq4uF39CLU',
+        url: 'https://www.youtube.com/embed/mPq4uF39CLU',
       },
       {
         titulo: 'Cómo crear una estrategia de marketing digital – HubSpot Español',
-        url: 'https://www.youtube.com/watch?v=9TkcnWWZD0g',
+        url: 'https://www.youtube.com/embed/9TkcnWWZD0g',
       },
     ],
   },
@@ -299,11 +299,11 @@ export const cursos: Curso[] = [
     videos: [
       {
         titulo: 'Explicación del lienzo del modelo de negocio',
-        url: 'https://www.youtube.com/watch?v=QOAOZMTLP5s',
+        url: 'https://www.youtube.com/embed/QOAOZMTLP5s',
       },
       {
         titulo: 'Dream Further – Diseño de proyectos emprendedores',
-        url: 'https://www.youtube.com/watch?v=UbQ3AW85VRo',
+        url: 'https://www.youtube.com/embed/UbQ3AW85VRo',
       },
     ],
   },
@@ -440,11 +440,11 @@ export const cursos: Curso[] = [
     videos: [
       {
         titulo: '¿Qué es la transformación digital en empresas y tecnología? – Telefónica',
-        url: 'https://www.youtube.com/watch?v=tNdS8pj5ZeI',
+        url: 'https://www.youtube.com/embed/tNdS8pj5ZeI',
       },
       {
         titulo: 'Transformación Digital en las Empresas – Juan Merodio',
-        url: 'https://www.youtube.com/watch?v=hpxMnUmofSc',
+        url: 'https://www.youtube.com/embed/hpxMnUmofSc',
       },
     ],
   },
@@ -485,11 +485,11 @@ export const cursos: Curso[] = [
     videos: [
       {
         titulo: 'Tutorial Declaración Anual 2025 empresas – Estados financieros | SAT',
-        url: 'https://www.youtube.com/watch?v=PE4HoV7mnfI',
+        url: 'https://www.youtube.com/embed/PE4HoV7mnfI',
       },
       {
         titulo: 'Tutorial Declaración Anual 2025 empresas – Decreto Plan México | SAT',
-        url: 'https://www.youtube.com/watch?v=lR7ATra8WY4',
+        url: 'https://www.youtube.com/embed/lR7ATra8WY4',
       },
     ],
   },
